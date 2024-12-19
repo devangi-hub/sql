@@ -115,18 +115,11 @@ When inserting the new vendor, you need to appropriately align the columns to be
 VALUES(col1,col2,col3,col4,col5) 
 */
 
-/*  Create table*/
-create table temp.new_vendor(
-vendor_id int not null PRIMARY KEY,
-vendor_name text,
-vendor_type text,
-vendor_owner_first_name text,
-vendor_owner_last_name text
-);
-/*  Copy existing table data*/
-insert into new_vendor select * from vendor;
+DROP TABLE IF EXISTS TEMP.NEW_VENDOR;
+CREATE TEMP TABLE TEMP.NEW_VENDOR 
+AS SELECT * FROM VENDOR;
 
-insert into new_vendor values(10,'Thomass Superfood Store','Fresh Focused','Thomas','Rosenthal');
+INSERT INTO TEMP.NEW_VENDOR  VALUES(10,'Thomass Superfood Store','Fresh Focused','Thomas','Rosenthal');
 
 
 -- Date
