@@ -54,7 +54,10 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+CUSTOMER_ADDRESS will have customer_id (reference from customer table), address , post code, street line , **active** etc as columns
+Type 1 - Customer & Customer_Address will have one to many relationship where one customer can have multiple addresses. Active column will be set 1 to latest changes for rest other addresses it will be set to 0; This way it can retain all previous addresses.
+
+Type 2 - Customer & Customer_Address will have one to one relationship where one customer can have only one address. (Here no need of active column); Change in address will overwite the exisitng entry in customer_address table.
 ```
 
 ***
